@@ -1,6 +1,6 @@
 # Digit Recognizer
 
-Handwritten digit recognition ML program written in C++ from scratch with CUDA for parallel computations. The FNN.hpp is an 
+Handwritten digit recognition ML program written from scratch with CUDA for parallel computations which uses an FNN to predict the digit entered. The FNN.hpp is an 
 extremely general implementation. One can move the three files, "FNN.hpp", "cuda.hpp" and "cuda.cu" to their project, include the
 "FNN.hpp" and create an FNN object and use it. Just remove the last 3 lines from "FNN.hpp". It is the only bit of code which is
 this project specific.
@@ -82,4 +82,4 @@ Check "options_help.txt" file in the "docs" folder of the project for a list of 
 ```
 One neural network is provided in the /saved_FNN folder of 2 hidden layers of 200 and 60 neurons each having an accuracy of
 95.840004% named "mnist.fnn". It is the default choice of the program so if you don't specify the name of the FNN to be used,
-that is the one which will be used by the program.
+that is the one which will be used.
