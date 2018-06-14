@@ -37,19 +37,15 @@ to build the project. You will find the produced binary in the "bin" folder.
 ### Use
 
 Launch a terminal naviagted to the bin folder in this project. To launch the program, enter
+```
+./recog [options]
+```
 
-	```
-	./recog [options]
-	```
-        
 Check the "options_help.txt" file in the "docs" folder of the project for the list of options and their meanings.
 Or just type 
-
-
-	```
-	./recog
-	```
-	
+```
+./recog
+```
 To get the list of options with their descriptions. 
 I have provided one neural network in the saved_FNN file of 2 hidden layers of 200 and 60 neurons each. It has an accuracy of
 95.840004%
