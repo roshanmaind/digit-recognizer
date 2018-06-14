@@ -44,7 +44,7 @@ button will cause the window frame to get cleared for drawing the next test digi
 	4. Nvidia GPU 	        (sorry ._.)
 	5. nvcc                 (if you wish to make a new build)
 If you don't have OpenGL or nvcc you can still use this program using the pre-built binary file provided in the /bin folder.
-However you will still need an Nvidia GPU to run the program.
+However, you will still need an Nvidia GPU to run the program.
 
 ### Build
 
@@ -54,12 +54,12 @@ executing file as a program" is checked.
 2. Right click the empty_build.sh file. Click on "Properties". Go to "Permissions" tab and make sure the checkbox reading "Allow
 executing file as a program" is checked.
 
-3. In the terminal (navigated to the project directory) type 
+3. In the terminal (navigated to the project directory), type 
 	```
 	./build.sh
 	```
         
-to build the project. You will find the produced binary in the "bin" folder.
+to build the project. You will find the produced binary in the /bin folder.
 
 4. To empty the bin folder type in the terminal (navigated to the project directory) 
 	```
