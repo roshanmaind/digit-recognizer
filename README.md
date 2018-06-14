@@ -11,26 +11,32 @@ There are 4 different modes in which the program can run. How to select the mode
 ##### 1. The Training Mode. 
 The training mode allows user to alter the hyperparameters to anything as they wish. How these options are set is given in the
 options_help.txt file present in the /docs folder.
-![Training](http://raw.githubusercontent.com/roshanfmaind/digit-recognizer/master/images/screenshot_training.png)
+
+![training](images/screenshot_training.png)
 
 ##### 2. The Complete Test Mode
 This tests the model on all of the 10k images of MNIST database in about a second or two.
-![Testing all](http://raw.githubusercontent.com/roshanfmaind/digit-recognizer/master/images/screenshot_test_all.png)
+
+![testing_all](images/screenshot_test_all.png)
 
 ##### 3. The Single Test Mode
 This test launches an OpenGL graphics window along with the main program. When the user clicks on the green arrow button on the 
 window, a new image from the database is loaded on the window and is passed to the FNN and the FNN's guess is shown on the
 terminal window. Pressing the red X button will cause the program to terminate.
-![Testing single](http://raw.githubusercontent.com/roshanfmaind/digit-recognizer/master/images/screenshot_test_single.png)
+
+![testing_single](images/screenshot_test_single.png)
 
 ##### 4. The Draw Test Mode
 This is feature of the program is not entirely perfect, even though it gives a significatnly good result, it still doesn't work
 all of the times. Using this mode, the user can draw on an OpenGL window which will be launched along with the program. And pass
 the current frame state to the FNN by pressing the green arrow button and lets the FNN make its best guess. Pressing the red X
 button will cause the window frame to get cleared for drawing the next test digit.
-![testing draw a](http://raw.githubusercontent.com/roshanfmaind/digit-recognizer/master/images/screenshot_test_draw_a.png)
-![testing draw b](http://raw.githubusercontent.com/roshanfmaind/digit-recognizer/master/images/screenshot_test_draw_b.png)
-![testing draw c](http://raw.githubusercontent.com/roshanfmaind/digit-recognizer/master/images/screenshot_test_draw_c.png)
+
+![testing_draw](images/screenshot_test_draw_a.png)
+
+![testing_draw](images/screenshot_test_draw_b.png)
+
+![testing_draw](images/screenshot_test_draw_c.png)
 
 ### Requirements
 	1. Linux OS
