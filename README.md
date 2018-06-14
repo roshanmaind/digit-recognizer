@@ -39,12 +39,15 @@ button will cause the window frame to get cleared for drawing the next test digi
 
 ### Requirements
 	1. Linux OS
-	2. OpenGL library       (mesa-utils and freeglut3-dev)
-	3. g++
+	2. OpenGL library*       (mesa-utils and freeglut3-dev)
+	3. g++*
 	4. Nvidia GPU 	        (sorry ._.)
-	5. nvcc                 (if you wish to make a new build)
+	5. nvcc*                
+	
+* needed only for building the project again.
+
 If you don't have OpenGL or nvcc you can still use this program using the pre-built binary file provided in the /bin folder.
-However, you will still need an Nvidia GPU to run the program.
+However, you will still need an Nvidia GPU to run it.
 
 ### Build
 
