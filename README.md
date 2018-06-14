@@ -5,6 +5,24 @@ extremely general implementation. One can move the three files, "FNN.hpp", "cuda
 "FNN.hpp" and create an FNN object and use it. Just remove the last 3 lines from "FNN.hpp". It is the only bit of code which is
 this project specific.
 
+### Features
+There are 4 different modes in which the program can run. How to select the mode is given in the "Use" section of this file.
+
+##### 1. The Training Mode. 
+The training mode allows user to alter the hyperparameters to anything as they wish. How these options are set is given in the
+options_help.txt file present in the /docs folder.
+##### 2. The Complete Test Mode
+This tests the model on all of the 10k images of MNIST database in about a second or two.
+##### 3. The Single Test Mode
+This test launches an OpenGL graphics window along with the main program. When the user clicks on the green arrow button on the 
+window, a new image from the database is loaded on the window and is passed to the FNN and the FNN's guess is shown on the
+terminal window. Pressing the red X button will cause the program to terminate.
+##### 4. The Draw Test Mode
+This is feature of the program is not entirely perfect, even though it gives a significatnly good result, it still doesn't work
+all of the times. Using this mode, the user can draw on an OpenGL window which will be launched along with the program. And pass
+the current frame state to the FNN by pressing the green arrow button and lets the FNN make its best guess. Pressing the red X
+button will cause the window frame to get cleared for drawing the next test digit.
+
 ### Requirements
 	1. Linux OS
 	2. OpenGL library       (mesa-utils and freeglut3-dev)
