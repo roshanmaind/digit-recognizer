@@ -1,7 +1,6 @@
 #include "cuda.hpp"
 #include "cublas_v2.h"
 #include "cuda_runtime.h"
-#include <iostream>
 
 using namespace std;
 
@@ -77,7 +76,6 @@ void kernel_gradient_descent_step(float *x, float *dx, float *var1, float *var2,
 	int idx = (blockIdx.x * 1024 + threadIdx.x);
 	if (idx < *r1) {
 		x[idx] = x[idx] - ((*var1) * (dx[idx] / (*var2)));
-		//printf("%f", dx[idx]);
 		dx[idx] = 0;
 	}
 }

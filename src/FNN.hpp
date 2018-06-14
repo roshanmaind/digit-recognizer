@@ -1,5 +1,10 @@
 /**
  * Supports a maximum of 22 layers (including input and output layers).
+ * 
+ * NOTE:- The FNN does not save the updated weights and biases automatically after every batch is done
+ * It leaves that to the main caller funciton. You have to call the FNN::save() function whenever you
+ * wish to write the updated weights and biases. This will allow you to control what value is being written
+ * so that weights and biases changes are not written when, for example, say the gradient explodes.
  */
 
 #ifndef FNN_HPP
@@ -13,7 +18,6 @@
 #include <fstream>
 #include <math.h>
 #include <stack>
-#include <assert.h>
 
 using namespace std;
 
@@ -22,7 +26,7 @@ using namespace std;
 class FNN {
 private:
 	int number_of_layers;
-	vector<int> layers, loss;
+	vector<int> layers;
 	int epochs, batch_size, epoch_dropout, samples_done;
 	float learning_rate, decay_rate;
 	int weights, biases;
@@ -31,7 +35,7 @@ private:
 	float cost;
 	bool cuda_gpu_found;
 
-	//NN parameters. Probably all are declared in the unified memory of GPU and CPU
+	//NN parameters. All are declared in the unified memory of GPU and CPU
 	float *w[21], *b[21], *a[23], *dw[21], *db[21], *da[23], *o;
 
 public:
@@ -286,11 +290,8 @@ void FNN::backprop(float *op, int e) {
 	if (samples_done == 1) {
 		cost = 0;
 	}
-	
-	loss.clear();
 	for (int i = 0; i < layers[number_of_layers - 1]; i++) {
-		loss.push_back(cross_entropy(a[number_of_layers][i], op[i]));
-		cost += loss[i];
+		cost += cross_entropy(a[number_of_layers][i], op[i]);
 	}
 	cuda_cross_entropy_prime(&da[number_of_layers], &a[number_of_layers], &o, layers[number_of_layers - 1]);
 	cuda_softmax_prime(&da[number_of_layers - 1], &a[number_of_layers], 
@@ -300,13 +301,11 @@ void FNN::backprop(float *op, int e) {
 		cuda_ReLU_prime_others(&da[i - 1], &dw[i - 1], &w[i - 1], &a[i - 1], &a[i], &da[i], layers[i - 1], layers[i]);
 	}
 	if (samples_done == 0) {
-		//update weights and biases
 		float lr = learning_rate * pow(decay_rate, (floor(e / epoch_dropout)));
 		for (int i = 0; i < number_of_layers - 1; i++) {
 			cuda_gradient_descent_step(&w[i], &dw[i], lr, batch_size, (layers[i] * layers[i + 1]));
 			cuda_gradient_descent_step(&b[i], &db[i], lr, batch_size, layers[i + 1]);
 		}
-		//print_last_layer();
 	}
 }
 
