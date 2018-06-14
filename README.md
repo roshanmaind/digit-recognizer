@@ -64,19 +64,19 @@ executing file as a program" is checked.
         
 to build the project. You will find the produced binary in the /bin folder.
 
-4. To empty the bin folder type in the terminal (navigated to the project directory) 
+4. To empty the /bin folder type in the terminal (navigated to the project directory) 
 	```
 	./empty_build.sh
 	```
 	
 ### Use
 
-Launch a terminal naviagted to the bin folder in this project. To launch the program, enter
+Launch a terminal naviagted to the /bin folder in this project. To launch the program, enter
 ```
 ./recog [options]
 ```
 
-Check "options_help.txt" file in the "docs" folder of the project for a list of options and their meanings. Or just type 
+Check "options_help.txt" file in the /docs folder of the project for a list of options and their meanings. Or just type 
 ```
 ./recog
 ```
