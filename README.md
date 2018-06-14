@@ -27,7 +27,7 @@ terminal window. Pressing the red X button will cause the program to terminate.
 ![testing_single](images/screenshot_test_single.png)
 
 ##### 4. The Draw Test Mode
-This is feature of the program is not entirely perfect, however it gives quite acceptable results. Using this mode, the user can draw on an OpenGL window which will be launched along with the program. And pass
+This is feature of the program is not entirely perfect, still it gives quite acceptable results. Using this mode, the user can draw on an OpenGL window which will be launched along with the program. And pass
 the current frame state to the FNN by pressing the green arrow button and lets the FNN make its best guess. Pressing the red X
 button will cause the window frame to get cleared for drawing the next test digit.
 
