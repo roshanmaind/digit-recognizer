@@ -1,0 +1,74 @@
+-mode
+    Description:-
+        Set the mode of the program. Choose from
+        1. train
+            Trains the FNN on all 60k images.
+
+            eg :- ./recog -mode train
+        2. test_all
+            Tests on all 10k images
+
+            eg :- ./recog -mode test_all
+        3. test_single
+            Tests on the MNIST images one by one while showing each image
+            and its original label.
+
+            eg :- ./recog -mode test_single
+        4. test_draw
+            Draw a digit on an OpenGL window
+
+            eg :- ./recog -mode test_draw
+
+-e
+    Description:-
+        Set the number of total epochs to be done
+
+        eg :- ./recog -mode train -e 200
+
+-b
+    Description:-
+        Set the batch size.
+
+        eg :- ./recog -mode train -b 50
+
+-l
+    Description:-
+        Used to set the learning rate of the training
+
+        eg :- ./recog -mode train -l 0.1
+
+-decay
+    Description:-
+        Set the decay rate. The program uses step decay method.
+
+        eg :- ./recog -mode train -decay 0.75
+
+-dropout
+    Description:-
+        Set the epoch dropout value for step decay
+
+        eg :- ./recog -mode train -dropout 3
+
+-layers
+    Description:-
+        Set the number of and sizes of hidden layers of the FNN
+
+        eg :- ./recog -mode train -layers 2 200 60
+
+        The above command will create an FNN of 2 hidden layer of which
+        the first layer will contain 200 neurons and the second will have
+        60 neurons
+        The sizes of the input and output layers are not changeable.
+
+-name
+    Description:-
+        Set the name of the FNN
+
+        eg :- ./recog -mode train -name my_fnn
+
+        The above command makes a new FNN called "my_fnn" if it doesn't 
+        already exists or uses the FNN called "my_fnn" if it is there in
+        the saved_FNN folder.
+
+Note:-  in case the other hyperparameters are not given during the training 
+        mode, some default values are given to the FNN.
