@@ -6,16 +6,16 @@ extremely general implementation. One can move the three files, "FNN.hpp", "cuda
 this project specific.
 
 ### Features
-There are 4 different modes in which the program can run. How to select the mode is given in the "Use" section of this file.
+There are 4 different modes in which the program can run. How to select a mode is given in the "Use" section of this file.
 
 ##### 1. The Training Mode. 
-The training mode allows user to alter the hyperparameters to anything as they wish. How these options are set is given in the
+The training mode allows user to alter the hyperparameters to any value that they wish. How these options are set is given in the
 options_help.txt file present in the /docs folder.
 
 ![training](images/screenshot_training.png)
 
 ##### 2. The Complete Test Mode
-This tests the model on all of the 10k images of MNIST database in about a second or two.
+This tests the model on all of the 10k images of MNIST database in about two seconds.
 
 ![testing_all](images/screenshot_test_all.png)
 
@@ -80,6 +80,6 @@ Check "options_help.txt" file in the "docs" folder of the project for a list of 
 ```
 ./recog
 ```
-One neural network is provided in the saved_FNN folder of 2 hidden layers of 200 and 60 neurons each having an accuracy of
+One neural network is provided in the /saved_FNN folder of 2 hidden layers of 200 and 60 neurons each having an accuracy of
 95.840004% named "mnist.fnn". It is the default choice of the program so if you don't specify the name of the FNN to be used,
 that is the one which will be used by the program.
