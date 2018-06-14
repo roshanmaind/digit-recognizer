@@ -2,8 +2,8 @@
 
 Handwritten digit recognition ML program written in C++ from scratch with CUDA for parallel computations. The FNN.hpp is an 
 extremely general implementation. One can move the three files, "FNN.hpp", "cuda.hpp" and "cuda.cu" to their project, include the
-"FNN.hpp" and create an FNN object and use it. It will work. Just remove the last 3 lines from "FNN.hpp". They are the only bit 
-of code that is this project specific.
+"FNN.hpp" and create an FNN object and use it. Just remove the last 3 lines from "FNN.hpp". It is the only bit of code which is
+this project specific.
 
 ### Requirements
 	1. Linux OS
@@ -41,12 +41,10 @@ Launch a terminal naviagted to the bin folder in this project. To launch the pro
 ./recog [options]
 ```
 
-Check the "options_help.txt" file in the "docs" folder of the project for the list of options and their meanings.
-Or just type 
+Check "options_help.txt" file in the "docs" folder of the project for a list of options and their meanings. Or just type 
 ```
 ./recog
 ```
-To get the list of options with their descriptions. 
-I have provided one neural network in the saved_FNN file of 2 hidden layers of 200 and 60 neurons each. It has an accuracy of
-95.840004%
-You may use that.
+One neural network is provided in the saved_FNN file of 2 hidden layers of 200 and 60 neurons each having an accuracy of
+95.840004% named "mnist.fnn". It is the default choice of the program so if you don't specify the name of the FNN to be used,
+that is the one which will be used by the program.
