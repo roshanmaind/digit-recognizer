@@ -29,8 +29,8 @@
 
 using namespace std;
 
-const int win_width = 308;
-const int win_height = 348;
+const int WIN_WIDTH = 308;
+const int WIN_HEIGHT = 348;
 int mn, num_of_images, rows, columns;
 int m, paint = 0;
 unsigned char input_pixel, input_label;
@@ -240,12 +240,12 @@ WindowFile::WindowFile(int *argc, char** argv, FNN& mnist) {
 	m = 0;
 	glutInit(argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-	glutInitWindowSize(win_width, win_height);
+	glutInitWindowSize(WIN_WIDTH, WIN_HEIGHT);
 	glutInitWindowPosition(640, 320);
 	glutCreateWindow("MNIST Inputs");
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(0.0f, win_width, win_height, 0.0f, 0.0f, 1.0f);
+	glOrtho(0.0f, WIN_WIDTH, WIN_HEIGHT, 0.0f, 0.0f, 1.0f);
 	glutDisplayFunc(show);
 	glutMouseFunc(click);
 	glutMainLoop();
@@ -271,12 +271,12 @@ WindowDraw::WindowDraw(int *argc, char** argv, FNN& mnist) {
 	m = 1;
 	glutInit(argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-	glutInitWindowSize(win_width, win_height);
+	glutInitWindowSize(WIN_WIDTH, WIN_HEIGHT);
 	glutInitWindowPosition(640, 320);
 	glutCreateWindow("Draw");
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(0.0f, win_width, win_height, 0.0f, 0.0f, 1.0f);
+	glOrtho(0.0f, WIN_WIDTH, WIN_HEIGHT, 0.0f, 0.0f, 1.0f);
 	glutDisplayFunc(show);
 	glutMouseFunc(click);
 	glutMotionFunc(paint_func);

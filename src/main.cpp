@@ -143,7 +143,7 @@ void train_model() {
 	printf("Learning rate decay factor: %f\n\n", decay_rate);
 	fflush(stdout);
 
-	for (int e = 1; e <= epochs; e++) {
+	for (int e = 0; e < epochs; e++) {
 		progress = 0;
 		printf("Epoch #%d: Progress -> 0%%", e);
 		fflush(stdout);
