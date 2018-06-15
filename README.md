@@ -9,7 +9,7 @@ this project specific.
 There are 4 different modes in which the program can run. How to select a mode is given in the "Use" section of this file.
 
 ##### 1. The Training Mode. 
-The training mode allows user to alter the hyperparameters to any value that they wish. How these options are set is given in the
+The training mode allows user to alter the hyperparameters like learning rate, decay factor, epochs, number of hidden layers and neurons to any value that they wish. How these options are set is given in the
 options_help.txt file present in the /docs folder.
 
 ![training](images/screenshot_training.png)
