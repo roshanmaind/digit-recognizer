@@ -42,7 +42,7 @@ button will cause the window frame to get cleared for drawing the next test digi
 	1. Linux OS
 	2. OpenGL library*       (mesa-utils and freeglut3-dev)
 	3. g++*
-	4. Nvidia GPU 	        (sorry ._.)
+	4. Nvidia GPU 	   
 	5. nvcc*  
 	
 	 *needed only for building the project again.
