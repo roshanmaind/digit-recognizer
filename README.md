@@ -81,6 +81,6 @@ Check "options_help.txt" file in the /docs folder of the project for a list of o
 ```
 ./recog
 ```
-One neural network is provided in the /saved_FNN folder of 2 hidden layers of 200 and 60 neurons each having an accuracy of
+One neural network is provided in the /saved_FNN folder of 2 hidden layers of 200 and 60 neurons having an accuracy of
 95.840004% named "mnist.fnn". It is the default choice of the program so if you don't specify the name of the FNN to be used,
 that is the one which will be used.
