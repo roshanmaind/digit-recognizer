@@ -2,7 +2,7 @@
 
 Handwritten digit recognition ML program written from scratch with CUDA for parallel computations which uses an FNN to predict 
 the digit entered. The number of hidden layers and the number of hidden layers can be adjusted to any values when running the 
-program by giving command line arguments. The FNN.hpp is an extremely general implementation. One can move the three files, 
+program by specifying options. The FNN.hpp is an extremely general implementation. One can move the three files, 
 "FNN.hpp", "cuda.hpp" and "cuda.cu" to their project, include the "FNN.hpp" and create an FNN object and use it. Just remove 
 the last 3 lines from "FNN.hpp". It is the only bit of code which is this project specific.
 
