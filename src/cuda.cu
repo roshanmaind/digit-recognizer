@@ -72,10 +72,10 @@ void kernel_ReLU_prime_others(float *da0, float *dw, float *w, float *a0, float 
 }
 
 __global__
-void kernel_gradient_descent_step(float *x, float *dx, float *var1, float *var2, int *r1) {
+void kernel_gradient_descent_step(float *x, float *dx, float *var1, int *r1) {
 	int idx = (blockIdx.x * 1024 + threadIdx.x);
 	if (idx < *r1) {
-		x[idx] = x[idx] - ((*var1) * (dx[idx] / (*var2)));
+		x[idx] = x[idx] - ((*var1) * dx[idx]);
 		dx[idx] = 0;
 	}
 }
@@ -176,11 +176,10 @@ void cuda_ReLU_prime_others(float **da0, float **dw, float **w, float **a0, floa
 
 void cuda_gradient_descent_step(float **x, float **dx, float lr, int bs, int R1) {
 	*r1 = R1;
-	*var1 = lr;
-	*var2 = bs;
+	*var1 = lr / bs;
 	dim3 grid((((int)(R1 / 1024)) + 1), 1, 1);
 	dim3 block(1024, 1, 1);
-	kernel_gradient_descent_step <<<grid, block>>> (*x, *dx, var1, var2, r1);
+	kernel_gradient_descent_step <<<grid, block>>> (*x, *dx, var1, r1);
 	cudaDeviceSynchronize();
 }
 

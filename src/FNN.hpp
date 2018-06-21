@@ -27,12 +27,12 @@ class FNN {
 private:
 	int number_of_layers;
 	vector<int> layers;
-	int epochs, batch_size, epoch_dropout, samples_done;
+	int epochs, batch_size, epoch_dropout, samples_done, batches_done, number_of_samples;
 	float learning_rate, decay_rate;
 	int weights, biases;
 	string file_name;
 	ifstream file_in; ofstream file_out;
-	float cost;
+	float cost, avg_cost;
 	bool cuda_gpu_found;
 
 	//NN parameters. All are declared in the unified memory of GPU and CPU
@@ -48,7 +48,7 @@ public:
 	void allocate(void);
 	string get_layers_sizes_string(void);
 	int get_layers(void);
-	float get_cost(void);
+	float get_loss(void);
 	int output(void);
 	void forward_prop(vector<float>&);
 	void backprop(int, int);
@@ -58,11 +58,12 @@ public:
 	bool good(void);
 	float cross_entropy(float y, float y_cap);
 	bool NaN();
+	void set_number_of_samples(int);
 };
 
 FNN::FNN() {
 	cuda_gpu_found = cuda_init();
-	cost = 0; samples_done = 0;
+	cost = avg_cost = 0; samples_done = batches_done = 0;
 }
 
 FNN::~FNN() {
@@ -110,8 +111,8 @@ int FNN::output() {
 	return max;
 }
 
-float FNN::get_cost() {
-	return ((float)(cost / batch_size));
+float FNN::get_loss() {
+	return avg_cost;
 }
 
 int FNN::get_layers() {
@@ -286,10 +287,6 @@ float FNN::cross_entropy(float y_cap, float y) {
 
 void FNN::backprop(float *op, int e) {
 	cuda_copy_to_device(&o, &op, layers[number_of_layers - 1]);
-	samples_done = (samples_done + 1) % batch_size;
-	if (samples_done == 1) {
-		cost = 0;
-	}
 	for (int i = 0; i < layers[number_of_layers - 1]; i++) {
 		cost += cross_entropy(a[number_of_layers][i], op[i]);
 	}
@@ -300,15 +297,26 @@ void FNN::backprop(float *op, int e) {
 		cuda_ReLU_prime_biases(&db[i - 1], &a[i], &da[i], layers[i]);
 		cuda_ReLU_prime_others(&da[i - 1], &dw[i - 1], &w[i - 1], &a[i - 1], &a[i], &da[i], layers[i - 1], layers[i]);
 	}
-	if (samples_done == 0) {
+	samples_done++;
+	if (samples_done == batch_size) {
+		samples_done = 0;
 		float lr = learning_rate * pow(decay_rate, (floor(e / epoch_dropout)));
 		for (int i = 0; i < number_of_layers - 1; i++) {
 			cuda_gradient_descent_step(&w[i], &dw[i], lr, batch_size, (layers[i] * layers[i + 1]));
 			cuda_gradient_descent_step(&b[i], &db[i], lr, batch_size, layers[i + 1]);
 		}
+		batches_done++;
+		if (batches_done * batch_size == number_of_samples) {
+			avg_cost = cost / (batch_size * batches_done * layers[number_of_layers - 1]);
+			batches_done = 0;
+			cost = 0;
+		}
 	}
 }
 
+void FNN::set_number_of_samples(int n) {
+	number_of_samples = n;
+}
 
 #ifndef WINDOW_HPP
 #include "window.hpp"

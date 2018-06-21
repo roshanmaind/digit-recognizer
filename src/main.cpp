@@ -145,7 +145,7 @@ void train_model() {
 
 	for (int e = 0; e < epochs; e++) {
 		progress = 0;
-		printf("Epoch #%d: Progress -> 0%%", e);
+		printf("Epoch #%d: Progress -> 0%%", e + 1);
 		fflush(stdout);
 
 		images.open(".././data/train-images.idx3-ubyte", ios::binary);
@@ -157,6 +157,8 @@ void train_model() {
 		read(labels, &number_of_images);
 		read(images, &image_rows);
 		read(images, &image_columns);
+
+		mnist.set_number_of_samples(number_of_images);
 
 		for (int i = 0; i < number_of_images; i++) {
 			input.clear();
@@ -176,11 +178,7 @@ void train_model() {
 
 		images.close();
 		labels.close();
-		printf("\nCost: %f\n\n", mnist.get_cost());
-		if (mnist.get_cost() == 2.000000) {
-			printf("Something probably became NaN. Last working version was saved. Terminating.\n");
-			break;
-		}
+		printf("\nLoss: %f\n\n", mnist.get_loss());
 		mnist.save();
 	}
 
