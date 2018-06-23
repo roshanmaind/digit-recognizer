@@ -75,10 +75,10 @@ Launch a terminal naviagted to the /bin folder in this project. To launch the pr
 ./recog [options]
 ```
 
-Check "options_help.txt" file in the /docs folder of the project for a list of options and their meanings. Or just type 
+Check "options_help.txt" file in the /docs folder of the project for the list of options and their meanings. Or just type 
 ```
 ./recog
 ```
-One neural network is provided in the /saved_FNN folder of 2 hidden layers of 200 and 60 neurons having an accuracy of
+One pre-trained feed-forward neural network is provided in the /saved_FNN folder of 2 hidden layers of 200 and 60 neurons having an accuracy of
 95.840004% named "mnist.fnn". It is the default choice of the program so if you don't specify the name of the FNN to be used,
 that is the one which will be used.
