@@ -1,7 +1,7 @@
 # Digit Recognizer
 
 Handwritten digit recognition ML program written from scratch with CUDA for parallel computations which uses an FNN to predict 
-the digit entered. The number of hidden layers and the number of hidden layers can be adjusted to any values when running the 
+the digit entered. The number of hidden layers and the number of hidden units can be adjusted to any values when running the 
 program by specifying options.
 
 ### Features
